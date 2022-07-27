@@ -5,52 +5,35 @@
 # Contributor: Chupligin Sergey <neochapay@gmail.com>
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
-_host="github.com"
-_project=nemomobile-ux
-_basename=quickcontrols-nemo
-_branch=master
-
-_gitname=qt$_basename
-pkgname=qt5-quickcontrols-nemo-examples-git
-
-pkgver=5.6.5.r0.ga585b29
-
+pkgname=qt5-quickcontrols-nemo-examples
+pkgver=5.7.2
 pkgrel=1
-pkgdesc="Nemomobile Qt Quick Controls"
+pkgdesc="Nemomobile Qt Quick Controls Examples"
 arch=('x86_64' 'aarch64')
-url="https://$_host/$_project/$_gitname#branch=$_branch"
+url="https://github.com/nemomobile-ux/qtquickcontrols-nemo"
 license=('LGPL-2.1-only AND Apache-2.0')
-depends=('qt5-quickcontrols-nemo' 'qt5-glacier-app' 'nemo-qml-plugin-statusnotifier-git')
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname}::git+${url}")
-md5sums=('SKIP')
+depends=('qt5-quickcontrols-nemo'
+	'qt5-glacier-app'
+	'nemo-qml-plugin-statusnotifier')
+makedepends=('cmake')
+source=("${url}/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('2fbdea56bb3fd76590df180e5aae47e449d04814c3d4e11bea3d089b5238d932')
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  ( set -o pipefail
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  ) 2>/dev/null
-}
 
 prepare() {
   # TODO: upstream building examples optional
   # https://t.me/NemoMobile/17555
-  cd "${srcdir}/${pkgname}"
-  sed -i 's/src//' qtquickcontrols-nemo.pro
+  cd qtquickcontrols-nemo-$pkgver
+  sed -i.bak 's/add_subdirectory[(]src[)]//' CMakeLists.txt
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  mkdir -p build
-  cd build
-  qmake ..
+  cd qtquickcontrols-nemo-$pkgver
+  cmake -DCMAKE_INSTALL_PREFIX:PATH='/usr'
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
-  make -j 1 INSTALL_ROOT="${pkgdir}" install
+  cd qtquickcontrols-nemo-$pkgver
+  make DESTDIR="$pkgdir" install
 }
