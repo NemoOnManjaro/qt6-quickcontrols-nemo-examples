@@ -6,7 +6,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-quickcontrols-nemo-examples
-pkgver=5.7.2
+pkgver=5.7.4
 pkgrel=1
 pkgdesc="Nemomobile Qt Quick Controls Examples"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ depends=('qt5-quickcontrols-nemo'
 	'nemo-qml-plugin-statusnotifier')
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2fbdea56bb3fd76590df180e5aae47e449d04814c3d4e11bea3d089b5238d932')
+sha256sums=('ff0609ae1de3a97fe5970cedc0974537e952d9bb787a8ddc3adf0f618b333397')
 
 
 prepare() {
