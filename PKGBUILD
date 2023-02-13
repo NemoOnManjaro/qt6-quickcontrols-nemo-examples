@@ -6,7 +6,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-quickcontrols-nemo-examples
-pkgver=5.7.4
+pkgver=5.7.5
 pkgrel=1
 pkgdesc="Nemomobile Qt Quick Controls Examples"
 arch=('x86_64' 'aarch64')
@@ -17,19 +17,12 @@ depends=('qt5-quickcontrols-nemo'
 	'nemo-qml-plugin-statusnotifier')
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ff0609ae1de3a97fe5970cedc0974537e952d9bb787a8ddc3adf0f618b333397')
-
-
-prepare() {
-  # TODO: upstream building examples optional
-  # https://t.me/NemoMobile/17555
-  cd qtquickcontrols-nemo-$pkgver
-  sed -i.bak 's/add_subdirectory[(]src[)]//' CMakeLists.txt
-}
+sha256sums=('a4da7dfc0238aa2ef50f7a6454ec116785671dec48b956c7cb60e3c91012faae')
 
 build() {
   cd qtquickcontrols-nemo-$pkgver
-  cmake -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+  cmake -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DBUILD_EXAMPLES=ON -DBUILD_CONTROLS=OFF
   make
 }
 
