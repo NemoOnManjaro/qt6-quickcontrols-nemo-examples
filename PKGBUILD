@@ -14,7 +14,8 @@ url="https://github.com/nemomobile-ux/qtquickcontrols-nemo"
 license=('LGPL-2.1-only AND Apache-2.0')
 depends=('qt5-quickcontrols-nemo'
 	'qt5-glacier-app'
-	'nemo-qml-plugin-statusnotifier')
+	'nemo-qml-plugin-statusnotifier'
+	'mlite')
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('a4da7dfc0238aa2ef50f7a6454ec116785671dec48b956c7cb60e3c91012faae')
