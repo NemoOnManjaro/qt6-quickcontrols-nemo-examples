@@ -15,6 +15,7 @@ url="https://github.com/nemomobile-ux/qtquickcontrols-nemo"
 license=('LGPL-2.1-only AND Apache-2.0')
 depends=(
     'qt6-shadertools'
+    'qt6-glacier-app'
     'qt6-declarative'
     'nemo-theme-default'
     'qt6-svg'
