@@ -5,7 +5,7 @@
 # Contributor: Chupligin Sergey <neochapay@gmail.com>
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
-pkgname=qt6-quickcontrols-nemo
+pkgname=qt6-quickcontrols-nemo-examples
 pkgver=6.2.4
 
 pkgrel=1
