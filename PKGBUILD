@@ -6,8 +6,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt6-quickcontrols-nemo-examples
-pkgver=6.2.4
-
+pkgver=6.2.7
 pkgrel=1
 pkgdesc="Nemomobile Qt Quick Controls Examples"
 arch=('x86_64' 'aarch64')
@@ -20,7 +19,7 @@ depends=(
 )
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0cd79263e2ee1fac171fd0469a24d5a2c2fdf0281eabfde673573a5c223ae388')
+sha256sums=('253c1f5008d99208e56332bde33fcd446092bb284ea5cef00777d066172bd312')
 
 build() {
     cd "qtquickcontrols-nemo-${pkgver}"
